@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API - California House Price Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    form input[type="text"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    form button:hover {
+      background-color: #45a049;
+    }
+
+    .prediction-text {
+      margin-top: 20px;
+      font-family: 'Hind', sans-serif;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>California House Price Prediction</h1>
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="MedInc" placeholder="Median Income" required="required" /><br>
+      <input type="text" name="HouseAge" placeholder="House Age" required="required" /><br>
+      <input type="text" name="AveRooms" placeholder="Average Rooms" required="required" /><br>
+      <input type="text" name="AveBedrms" placeholder="Average Bedrooms" required="required" /><br>
+      <input type="text" name="Population" placeholder="Population" required="required" /><br>
+      <input type="text" name="AveOccup" placeholder="Average Occupancy" required="required" /><br>
+      <input type="text" name="Latitude" placeholder="Latitude" required="required" /><br>
+      <input type="text" name="Longitude" placeholder="Longitude" required="required" /><br>
+      <button type="submit">Predict</button>
+    </form>
+    <div class="prediction-text">
+      {{prediction_text}}
+    </div>
+  </div>
+</body>
+
+</html>
