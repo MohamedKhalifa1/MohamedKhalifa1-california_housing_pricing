@@ -26,7 +26,7 @@ def predict_api():
 @app.route('/predict',methods=['POST'])
 def predict():
     data=[float(x) for x in request.form.values()]
-    # final_input=scalar.transform(np.array(data).reshape(1,-1))
+    final_input=scalar.transform(np.array(data).reshape(1,-1))
     print(np.array(data).reshape(1,-1))
     output = model.predict(np.array(data).reshape(1,-1))[0]
     return render_template("home.html",prediction_text="The House price prediction in California is {}".format(output))
